@@ -17,8 +17,9 @@ IM = oo.query(q);
 % threshold for viewing
 M2 = RAMONVolume; M2.setCutout(M.data > 0.7);
 h = image(IM); 
-h.associate(M2);
+h.associate(M2)
 
 % watershed
 S = segmentWatershed2D(M,10,5,10);
-h = image(IM); h.associate(S)
+h = image(IM); 
+h.associate(S)
