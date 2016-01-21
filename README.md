@@ -1,6 +1,6 @@
 # neuroXplorer
 
-** neuroXplorer ** is a set of tools and programs that explicitly displays and compares various watershed programs. 
+**neuroXplorer** is a set of tools and programs that explicitly displays and compares various watershed programs. 
 
 ## Getting Started & Documentation
 
