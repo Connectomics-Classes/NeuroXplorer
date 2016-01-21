@@ -1,11 +1,11 @@
 # How to grab our data and put it into a .npy file
 
-# To load it back in:
-# 
+# To load data in code:
+#
 # import numpy as np
-# 
-# membrane_images = np.load('our_data.npy')
-# 
+#
+# membrane_images = np.load('nXp_data.npy')
+#
 
 import ndio
 import ndio.remote.OCP as OCP
@@ -14,13 +14,11 @@ oo = OCP()
 import ndio.remote.OCPMeta as NDLIMS
 nn = NDLIMS()
 
-import ndio.convert.png as ndpng	# For export to pngs later
+import ndio.convert.tiff as ndtiff	# For export to tiff later
 
 import numpy as np
 
-file = open('our_data.txt', 'w')	# Open file
-
-print "Done importing\n"
+print "Done importing packages"
 
 tokens = oo.get_public_tokens()
 
@@ -46,11 +44,10 @@ membrane_query = {
     'resolution': membrane_group_ROI['resolution'],
 }
 
-print "Getting images\n"
+print "Getting images"
 membrane_images = oo.get_cutout(**membrane_query)
 
-print "Printing to file\n"
-np.save('our_data.npy', membrane_images)
+print "Printing to file"
+np.save('nXp_data.npy', membrane_images)
 
 print "Done."
-
