@@ -6,8 +6,9 @@ NeuroXplorer is a set of tools and programs that explicitly displays and compare
 
 neuroXplorer contains a set of jupyter notebook files which contains in-house documentation for our main two programs. 
 
-
-
+.
+.
+.
 
 #### Crafted from love by Albert, Thomas, Augusto
 
