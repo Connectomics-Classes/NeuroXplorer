@@ -21,7 +21,6 @@ from skimage.morphology import binary_dilation
 from skimage.morphology import binary_erosion
 from skimage.filters.rank import threshold
 from skimage.exposure import rescale_intensity
-from skimage.filters import threshold_otsu
 ###
 
 print "Done importing packages"
@@ -72,14 +71,9 @@ print "Running closing"
 
 close_image = closing(pre_image, selem=np.ones((4,4)))
 
-print "Running median filter"
-# Remove of white speckles of noise
-img_med = ndi.median_filter(close_image, size=4)
-
 print "Running threshold"
-#binary_img = threshold(close_image, selem=np.ones((200,200)))
-threshold = threshold_otsu(img_med)
-binary_img = img_med > threshold
+binary_img = threshold(close_image, selem=np.ones((200,200)))
+print close_image[0]
 
 image = binary_img
 foreground = 1 - image
@@ -94,11 +88,13 @@ print "Running watershed"
 # Now we want to separate the two objects in image
 # Generate the markers as local maxima of the distance to the background
 distance = ndi.distance_transform_edt(foreground) # parameter: sampling=[100,100])
+print distance[0]
 distance_float = rescale_intensity(distance, in_range='image', out_range='float')
+print (distance_float)
 
-local_maxi = peak_local_max(distance, indices=False, footprint=np.ones((10, 10)),
+local_maxi = peak_local_max(distance, indices=False, footprint=np.ones((2, 2)),
                             labels=foreground)
-markers = ndi.label(local_maxi)[0] #[0]
+markers = ndi.label(local_maxi)[0]
 
 #markers = distance > 5
 #print markers
