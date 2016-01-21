@@ -13,7 +13,7 @@ membrane_images = np.load('nXp_data.npy')
 pre_image = 255 * membrane_images[0]
 
 min_seed_size = 5 #2
-connectivity = 2
+connectivity = 2 #2
 smooth_thresh = 0.02 #0.02
 
 ws_train = morpho.watershed(pre_image,
